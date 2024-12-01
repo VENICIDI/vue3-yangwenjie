@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
 
 export default [
   {
@@ -14,4 +14,5 @@ export default [
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
+
 ]
