@@ -1,7 +1,5 @@
 <script setup>
 import { RouterView } from 'vue-router';
-
-
 </script>
 
 
@@ -9,12 +7,15 @@ import { RouterView } from 'vue-router';
   <RouterView/>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 header {
   line-height: 1.5;
   max-height: 100vh;
 }
 
+.test{
+  color: $sucColor;
+}
 .logo {
   display: block;
   margin: 0 auto 2rem;
