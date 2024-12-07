@@ -18,6 +18,7 @@ onMounted(() => {categoryStore.getCatgeory()})
   <LayoutFixed/>
   <LayoutNav />
   <LayoutHeader />
-  <LayoutFooter />
   <RouterView />
+  <LayoutFooter />
+
 </template>
