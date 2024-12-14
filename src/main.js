@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+import { lazyPlugin } from './directives'
 
 //测试借口函数
 // import {getCategory} from '@/apis/testAPI'
@@ -11,7 +12,9 @@ import router from './router'
 //   console.log(res)
 // })
 const app = createApp(App)
+
 app.use(createPinia())
 app.use(router)
+app.use(lazyPlugin)
 
 app.mount('#app')
