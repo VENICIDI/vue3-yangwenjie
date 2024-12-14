@@ -13,6 +13,8 @@ const getGoods = async ()=>{
 }
 onMounted(()=>getGoods())
 
+console.log(goodsProduct)
+
 </script>
 
 <template>
@@ -28,7 +30,7 @@ onMounted(()=>getGoods())
         </RouterLink>
         <ul class="goods-list">
           <li v-for="good in cate.goods" :key="good.id">
-            <GoodsItem goods="goods"/>
+            <GoodsItem :good='good'/>
           </li>
         </ul>
       </div>

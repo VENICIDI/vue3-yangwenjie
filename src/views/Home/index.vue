@@ -18,11 +18,11 @@ import HomePanel from './components/HomePanel.vue'
   <HomeHot />
   <homeProduct />
 
-  <HomePanel title="新鲜好物" sub-title="新鲜好无">
-    <div>bb</div>
+  <!-- <HomePanel title="新鲜好物" sub-title="新鲜好无">
+
   </HomePanel>
 
   <HomePanel title="人气推荐" sub-title="bn">
-    <div>cc</div>
-  </HomePanel>
+
+  </HomePanel> -->
 </template>
