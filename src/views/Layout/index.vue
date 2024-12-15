@@ -18,7 +18,9 @@ onMounted(() => {categoryStore.getCatgeory()})
   <LayoutFixed/>
   <LayoutNav />
   <LayoutHeader />
-  <RouterView />
+  <!-- //添加key，破坏内存复用机制，强制销毁重建 -->
+  <RouterView :key="$route.fullPath"/>
+  <!-- <RouterView/> -->
   <LayoutFooter />
 
 </template>
