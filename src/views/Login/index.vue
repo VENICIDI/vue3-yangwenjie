@@ -1,6 +1,11 @@
 <script setup>
 import { ref } from 'vue';
+import { ElMessage } from 'element-plus'
+import 'element-plus/theme-chalk/el-message.css'
+import router from '@/router';
+import { useUserStore } from '@/stores/user';
 
+const userStore = useUserStore()
 
 //表单检验，账号和密码
 const form = ref({
@@ -21,7 +26,7 @@ const rules = {
     {
       validator: (rule,value,callback) => {
         //勾选通过，反之不通过
-        return val ? callback() : new Error('请先同意协议')
+        return value ? callback() : new Error('请先同意协议')
       }
     }
   ]
@@ -30,13 +35,16 @@ const rules = {
 //获取form实例做统一校验
 const formRef = ref(null)
 const doLogin = ()=>{
-  formRef.value.validate((valid)=>{
+  const {account , password} = form.value
+  formRef.value.validate(async (valid)=>{
     if(valid){
       //登陆
+      await userStore.getUserInfo({account,password})
+      // 1. 提示用户
+      ElMessage({ type: 'success', message: '登录成功' })
+      // 2. 跳转首页
+      router.replace({ path: '/' })
     }
-    // else{
-    //   alert('登录失败，请重新检查表单')
-    // }
   })
 }
 
