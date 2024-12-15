@@ -2,7 +2,9 @@
 import { getDeatil } from '@/apis/detail';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-
+import DetailHot from './components/DetailHot.vue';
+import ImageView from '@/components/ImageView/index.vue'
+import XtxSku from '@/components/XtxSku/index.vue'
 const route = useRoute()
 const goods = ref({})
 const getGoods = async()=>{
@@ -11,6 +13,10 @@ const getGoods = async()=>{
 }
 onMounted(() => getGoods())
 
+//sku规格被操作
+const skuChange = (sku) => {
+  console.log(sku)
+}
 </script>
 
 <template>
@@ -23,7 +29,7 @@ onMounted(() => getGoods())
           </el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{ goods.categories[0].name }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ goods.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <!-- 商品信息 -->
@@ -32,7 +38,7 @@ onMounted(() => getGoods())
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-
+              <ImageView :image-list="goods.mainPictures"/>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -81,7 +87,7 @@ onMounted(() => getGoods())
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSku :goods="goods" @change="skuChange"/>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->
@@ -115,7 +121,8 @@ onMounted(() => getGoods())
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-
+              <DetailHot :hot-type="1"/>
+              <DetailHot :hot-type="2"/>
             </div>
           </div>
         </div>
