@@ -20,5 +20,5 @@ app.use(pinia)
 app.use(router)
 app.use(lazyPlugin)
 app.use(componentPlugin)
-
+app.config.devtools = true
 app.mount('#app')

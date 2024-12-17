@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-
+import HeaderCart from './HeaderCart.vue';
 //使用pinia的数据
 import { useCategoryStore } from '@/stores/category';
 const categoryStore = useCategoryStore()
@@ -22,7 +22,7 @@ const categoryStore = useCategoryStore()
         <input type="text" placeholder="搜一搜">
       </div>
       <!-- 头部购物车 -->
-
+      <HeaderCart/>
     </div>
   </header>
 </template>
