@@ -1,8 +1,7 @@
 //购物车
 
-import { objectEntries } from "@vueuse/core";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export const useCartStore = defineStore ('cart',()=>{
   //定义state-cartList
@@ -30,7 +29,18 @@ export const useCartStore = defineStore ('cart',()=>{
     cartList.value.splice(index,1)
   }
 
+  //计算总数和总价
+  const allCount = computed(()=>{
+    return cartList.value.reduce((a,c)=>a+c.count,0)
+  })
+  const allPrice = computed(()=>{
+    return cartList.value.reduce((a,c)=>a+c.count*c.price,0)
+  })
+
+  console.log(allCount,allPrice)
   return {
+    allCount,
+    allPrice,
     cartList,
     addCart,
     delCart
